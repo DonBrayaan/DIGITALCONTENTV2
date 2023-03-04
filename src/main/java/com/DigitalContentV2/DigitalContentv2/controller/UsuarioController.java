@@ -51,15 +51,30 @@ public class UsuarioController {
 	@GetMapping("/usuario/editar/{idUsuario}")
 	public String usuarioEdit(@PathVariable("idUsuario") Integer idUsuario, Model modelo) {
 		Usuario usuario = usuarioDao.encontrarId(idUsuario);
+		
+		List<Barrio> listaBarrio = barrioDao.encontrarTodo();
+		
+		modelo.addAttribute("listaBarrio", listaBarrio);
 		modelo.addAttribute("usuario", usuario);
 		return "Ausuario/asignarRoles";
 	}
 	
-	@GetMapping("/users")
+	@PostMapping("/actualizar")
+	public String usuarioActualizar(@ModelAttribute("usuarioN") Usuario usuario) {
+		usuarioDao.crear(usuario);
+		return "redirect:/logout";
+	}
+	
+	@GetMapping("/userLog")
 	public String nombreUser(Model modelo, HttpSession session) {
 		Usuario logueado = (Usuario) session.getAttribute("usersession");
 		modelo.addAttribute("user", logueado);
 		return "user";
+	}
+	
+	@GetMapping("/forgotPassword")
+	public String  vistaForgot() {
+		return "Ausuario/ForgotPassword";
 	}
 }
 
