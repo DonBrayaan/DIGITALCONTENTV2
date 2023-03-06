@@ -16,4 +16,28 @@ public interface ProductoRepository extends JpaRepository<Producto, Integer>{
 			nativeQuery = true
 	)
 	List<Producto> buscarEstado();
+	
+	@Query(
+			value = "SELECT * FROM producto p WHERE p.id_genero_fk = 1",
+			nativeQuery = true
+	)
+	List<Producto> buscarGM();
+	
+	@Query(
+			value = "SELECT * FROM producto p WHERE p.id_genero_fk = 2",
+			nativeQuery = true
+	)
+	List<Producto> buscarGH();
+	
+	@Query(
+			value = "SELECT * FROM producto p WHERE p.id_genero_fk = 3",
+			nativeQuery = true
+	)
+	List<Producto> buscarGNH();
+	
+	@Query(
+			value = "SELECT * FROM producto p WHERE p.id_genero_fk = 4",
+			nativeQuery = true
+	)
+	List<Producto> buscarGNM();
 }
