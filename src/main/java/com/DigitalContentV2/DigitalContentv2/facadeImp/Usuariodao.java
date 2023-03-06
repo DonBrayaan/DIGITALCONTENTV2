@@ -101,4 +101,27 @@ public class Usuariodao implements IUsuario {
 		return this.usuarioRepository.listaCorreos();
 	}
 	
+	public void updateResetPasswordToken(String token, String email) throws UsuarioNotFoundException {
+        Usuario usuario = usuarioRepository.findByEmail(email);
+        if (usuario != null) {
+            usuario.setResetPasswordToken(token);
+            usuarioRepository.save(usuario);
+        } else {
+            throw new UsuarioNotFoundException("No se pudo encontrar ningún cliente con el correo electrónico " + email);
+        }
+    }
+     
+    	public Usuario getByResetPasswordToken(String token) {
+        return usuarioRepository.findByResetPasswordToken(token);
+    }
+     
+   	public void updatePassword(Usuario customer, String newPassword) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        customer.setContrasena(encodedPassword);
+         
+        customer.setResetPasswordToken(null);
+        usuarioRepository.save(customer);
+    }
+	
 }
