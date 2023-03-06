@@ -81,7 +81,11 @@ public class SecirityConfiguration extends WebSecurityConfigurerAdapter {
 				"/SweetAlert2/**",
 				"/Validaciones/**",
 				"/volverarriba.js**",
-				"/img**"
+				"/img**",
+			     	"/hombre",
+			     	"/mujer",
+			     	"nina",
+			     	"nino"
 		).permitAll().antMatchers().hasRole("Cliente")
 		.antMatchers("/dom/**").hasAnyAuthority("Domiciliario","Administrador")
 		.antMatchers("/admin/**").hasAuthority("Administrador")
