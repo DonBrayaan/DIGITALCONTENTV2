@@ -84,8 +84,8 @@ public class SecirityConfiguration extends WebSecurityConfigurerAdapter {
 				"/img**",
 			     	"/hombre",
 			     	"/mujer",
-			     	"nina",
-			     	"nino"
+			     	"/nina",
+			     	"/nino"
 		).permitAll().antMatchers().hasRole("Cliente")
 		.antMatchers("/dom/**").hasAnyAuthority("Domiciliario","Administrador")
 		.antMatchers("/admin/**").hasAuthority("Administrador")
