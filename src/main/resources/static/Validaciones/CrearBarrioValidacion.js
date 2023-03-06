@@ -7,7 +7,7 @@ function si(){
 	if (caja1.length >= 20) {
 		Swal.fire({
   			icon: 'error',
-  			title: 'Oops...',
+  			title: 'Error...',
  			text: 'Sólo se permiten menos de 20 letras para el nombre!',
   
 })
@@ -21,7 +21,12 @@ function si(){
 	}
 
 	else if (/^([0-9])*$/.test(caja1)) {
-		alert("El valor " + caja1 + " en el campo nombre no es valido");
+			Swal.fire({
+  			icon: 'info',
+  			title: 'Oops...',
+ 			text: 'El campo Nombre es invalido!',
+  
+})
 		document.getElementById("txtnombre").focus();
 		document.getElementById("txtnombre").style.borderColor = "red";
 		return false;
@@ -30,7 +35,7 @@ function si(){
 	else if (caja1.length <= 3) {
 		Swal.fire({
   			icon: 'error',
-  			title: 'Oops...',
+  			title: 'Error...',
  			text: 'Sólo se permiten mas de 3 letras para el nombre!',
 		})
 		return false;

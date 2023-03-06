@@ -7,7 +7,7 @@ function si(){
 	if (caja1.length >= 35) {
 		Swal.fire({
   			icon: 'error',
-  			title: 'Oops...',
+  			title: 'Error...',
  			text: 'Sólo se permiten menos de 35 letras para la Descripcion!',
   
 })
@@ -21,7 +21,12 @@ function si(){
 	}
 
 	else if (/^([0-9])*$/.test(caja1)) {
-		alert("El valor " + caja1 + " el campo Descripcion no es valido");
+			Swal.fire({
+  			icon: 'info',
+  			title: 'Oops...',
+ 			text: 'El campo Descripcion es invalido!',
+  
+})
 		document.getElementById("txtdescripcion").focus();
 		document.getElementById("txtdescripcion").style.borderColor = "red";
 		return false;
@@ -30,7 +35,7 @@ function si(){
 	else if (caja1.length <= 3) {
 		Swal.fire({
   			icon: 'error',
-  			title: 'Oops...',
+  			title: 'Error...',
  			text: 'Sólo se permiten mas de 3 letras para la Descripcion!',
 		})
 		return false;

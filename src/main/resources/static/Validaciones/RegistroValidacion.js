@@ -6,10 +6,9 @@ function si() {
 
 	if (caja1.length >= 35) {
 		Swal.fire({
-			title: 'Error!',
-			text: 'Sólo se permiten menos de 35 letras para el nombre',
-			icon: 'error',
-			confirmButtonText: 'Cerrar'
+  			icon: 'error',
+  			title: 'Error...',
+ 			text: 'Sólo se permiten menos de 35 letras para el nombre!',
 		})
 		return false;
 	}
@@ -23,14 +22,23 @@ function si() {
 	}
 
 	else if (/^([0-9])*$/.test(caja1)) {
-		alert("El valor " + caja1 + " en el campo nombre no es valido");
+		Swal.fire({
+  			icon: 'info',
+  			title: 'Oops...',
+ 			text: 'El campo Nombre es invalido!',
+  
+})
 		document.getElementById("txtnombre").focus();
 		document.getElementById("txtnombre").style.borderColor = "red";
 		return false;
 	}
 
 	else if (caja1.length <= 2) {
-		alert("Sólo se permiten mas de 2 letras para el nombre")
+		Swal.fire({
+  			icon: 'error',
+  			title: 'Error...',
+ 			text: 'Sólo se permiten mas de 2 letras para el nombre!',
+		})
 		return false;
 	}
 
@@ -39,8 +47,13 @@ function si() {
 
 	caja2 = document.getElementById("txtapellido").value;
 
-	if (caja2.length >= 35) {
-		alert("Sólo se permiten de 35 letras para los apellidos")
+	if (caja2.length >= 50) {
+		Swal.fire({
+  			icon: 'error',
+  			title: 'Error...',
+ 			text: 'Sólo se permiten menos de 50 letras para los Apellidos!',
+  
+})
 		return false;
 	}
 
@@ -52,14 +65,66 @@ function si() {
 
 
 	else if (/^([0-9])*$/.test(caja2)) {
-		alert("El valor " + caja2 + " en el campo Apellidos no es valido");
+		Swal.fire({
+  			icon: 'info',
+  			title: 'Oops...',
+ 			text: 'El campo Apellidos es invalido!',
+  
+})
 		document.getElementById("txtapellido").focus();
 		document.getElementById("txtapellido").style.borderColor = "red";
 		return false;
 	}
 
 	else if (caja2.length <= 2) {
-		alert("Sólo se permiten mas de 2 letras para el apellido")
+		Swal.fire({
+  			icon: 'error',
+  			title: 'Error...',
+ 			text: 'Sólo se permiten mas de 3 letras para los Apellidos!',
+		})
 		return false;
 	}
+	
+		//Validacion Direccion
+	
+	caja3 = document.getElementById("txtdireccion").value;
+
+
+	if (caja3.length >= 100) {
+		Swal.fire({
+  			icon: 'error',
+  			title: 'Error...',
+ 			text: 'Sólo se permiten menos de 100 letras para la Direccion!',
+  
+})
+		return false;
+	}
+	
+	else if (/^\s+$/.test(caja3)) {
+		document.getElementById("txtdireccion").focus();
+		document.getElementById("txtdireccion").style.borderColor = "green";
+		return true;
+	}
+
+	else if (/^([0-9])*$/.test(caja3)) {
+			Swal.fire({
+  			icon: 'info',
+  			title: 'Oops...',
+ 			text: 'El campo Direccion es invalido!',
+  
+})
+		document.getElementById("txtdireccion").focus();
+		document.getElementById("txtdireccion").style.borderColor = "red";
+		return false;
+	}
+
+	else if (caja3.length <= 7) {
+		Swal.fire({
+  			icon: 'error',
+  			title: 'Error...',
+ 			text: 'Sólo se permiten mas de 7 letras para la Direccion!',
+		})
+		return false;
+	}
+
 }
