@@ -68,7 +68,7 @@ public class SecirityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 		.authorizeRequests()
-		.antMatchers("/","/registro**","/registro/forgotPassword",
+		.antMatchers("/","/registro**","/registro/forgotPassword", "/registro/reset_password",
 			     	"/cat/**",
 				"/js/**",
 				"/css/**",
