@@ -40,6 +40,9 @@ public class UsuarioController {
 	@Autowired
 	private Barriodao barrioDao;
 	
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	@ModelAttribute("usuario")
 	private UsuarioRegistroS retornarNuevoUsuario() {
 		return new UsuarioRegistroS();
