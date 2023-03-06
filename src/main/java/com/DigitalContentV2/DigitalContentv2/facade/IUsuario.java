@@ -17,4 +17,8 @@ public interface IUsuario extends UserDetailsService {
 	
 	public Usuario save(UsuarioRegistroS uregistroS);	
 	public String[] listarCorreos();
+	
+	public void updateResetPasswordToken(String token, String email)  throws UsuarioNotFoundException;
+	public Usuario getByResetPasswordToken(String token);
+	public void updatePassword(Usuario customer, String newPassword);
 }
