@@ -56,7 +56,7 @@ public class UsuarioController {
 		
 		modelo.addAttribute("listaBarrio", listaBarrio);
 		modelo.addAttribute("usuario", usuario);
-		return "Ausuario/asignarRoles";
+		return "users_edit";
 	}
 	
 	@PostMapping("/actualizar")
