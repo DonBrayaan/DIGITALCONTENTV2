@@ -14,4 +14,8 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 	@Query(value= "call listarcorreos()", nativeQuery = true)
 	String[] listaCorreos();
 	
+	@Query("SELECT c FROM Usuario c WHERE c.correo = ?1")
+    	public Usuario findByEmail(String email); 
+     
+    	public Usuario findByResetPasswordToken(String token);
 }
