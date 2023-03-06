@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.DigitalContentV2.DigitalContentv2.dto.UsuarioRegistroS;
 import com.DigitalContentV2.DigitalContentv2.modelo.Usuario;
+import com.DigitalContentV2.DigitalContentv2.modelo.UsuarioNotFoundException;
 
 public interface IUsuario extends UserDetailsService {
 
