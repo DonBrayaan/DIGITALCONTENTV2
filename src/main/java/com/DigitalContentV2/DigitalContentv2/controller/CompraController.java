@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.DigitalContentV2.DigitalContentv2.dto.CompraDTO;
 import com.DigitalContentV2.DigitalContentv2.facadeImp.Compradao;
+import com.DigitalContentV2.DigitalContentv2.facadeImp.Entregadao;
 import com.DigitalContentV2.DigitalContentv2.facadeImp.Productodao;
 import com.DigitalContentV2.DigitalContentv2.modelo.Compra;
+import com.DigitalContentV2.DigitalContentv2.modelo.Entrega;
 import com.DigitalContentV2.DigitalContentv2.modelo.Producto;
 
 @RequestMapping("/admin")
@@ -26,11 +28,42 @@ public class CompraController {
 	@Autowired
 	private Productodao productoDao;
 	
+	@Autowired
+	private Entregadao entregadao;
+	
 	@GetMapping("/compra")
 	public String listaCompras(Model modelo) {
 		List<Compra> lstCompra = this.compraDao.encontrarTodo();
 		modelo.addAttribute("listC",lstCompra);
 		return "Administration/Acompra/compra";
+	}
+	
+	@GetMapping("/pendiente")
+	public String allPendiente(Model modelo) {
+		List<Entrega> lstEn = this.entregadao.estadoPendiente();
+		modelo.addAttribute("listaEn", lstEn);
+		return "Administration/Aproducto/pedidosAd";
+	}
+	
+	@GetMapping("/encamino")
+	public String allEnCamino(Model modelo) {
+		List<Entrega> lstEn = this.entregadao.estadoEnCamino();
+		modelo.addAttribute("listaEn", lstEn);
+		return "Administration/Aproducto/pedidosAd";
+	}
+	
+	@GetMapping("/entregada")
+	public String allEntregadas(Model modelo) {
+		List<Entrega> lstEn = this.entregadao.estadoEntregado();
+		modelo.addAttribute("listaEn", lstEn);
+		return "Administration/Aproducto/pedidosAd";
+	}
+	
+	@GetMapping("/entregasdom")
+	public String allEntregas(Model modelo) {
+		List<Entrega> lstEn = this.entregadao.encontrarTodo();
+		modelo.addAttribute("listaEn", lstEn);
+		return "Administration/Aproducto/pedidosAd";
 	}
 	
 	@GetMapping("/compra/nuevoC")
