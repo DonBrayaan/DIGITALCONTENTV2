@@ -79,7 +79,9 @@ public class SecirityConfiguration extends WebSecurityConfigurerAdapter {
 				"/barrioJS/**",
 				"/JQuery/**",
 				"/SweetAlert2/**",
-				"/Validaciones/**"
+				"/Validaciones/**",
+				"/volverarriba.js**",
+				"/img**"
 		).permitAll().antMatchers().hasRole("Cliente")
 		.antMatchers("/dom/**").hasAnyAuthority("Domiciliario","Administrador")
 		.antMatchers("/admin/**").hasAuthority("Administrador")
