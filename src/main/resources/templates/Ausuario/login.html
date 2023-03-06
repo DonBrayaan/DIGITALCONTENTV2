@@ -40,9 +40,9 @@
 							usuario</cite>
 					</figcaption>
 				</figure>
-				<label>*Correo: </label> <input type="text" id="username"
+				<label>*Correo: </label> <input type="email" id="username"
 					name="username" class="form-control" placeholder="Ingrese su email"
-					autofocus="autofocus" required> <br> <label>*Contraseña:
+					autofocus="autofocus" > <br> <label>*Contraseña:
 				</label> <input type="password" id="password" name="password"
 					class="form-control" placeholder="Ingrese su contraseña" required>
 				<br>
@@ -55,7 +55,7 @@
 								th:href="@{/registro/forgotPassword}">aquí</a>
 								<br> <br> <input
 								type="submit" id="login-submit"
-								class="form-control btn btn-danger" value="Iniciar sesion" /> <br>
+								class="form-control btn btn-danger" value="Iniciar sesion" onclick="return si()"> <br>
 							<br>
 						</div>
 					</div>
@@ -76,6 +76,14 @@
 	<!-- Font Awesome -->
 	<script src="https://kit.fontawesome.com/e4804d9539.js"
 		crossorigin="anonymous"></script>
+		
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<!-- JavaScript -->
+	<script type="text/javascript"
+		th:src="@{/Validaciones/.js}"></script>
+	<!-- SweetAlert2 -->
+	<script type="text/javascript" th:src="@{/SweetAlert2/package/dist/sweetalert2.all.min.js}"></script>
 </body>
 </html>
 </body>
