@@ -14,4 +14,8 @@ public interface IProducto {
 	public List<Producto> encontrarEstado();
 	public String resetCart();
 	public List<Producto> encontrarIdCar(Integer idProducto);
+	List<Producto> encontrarCM();
+	List<Producto> encontrarCH();
+	List<Producto> encontrarCNH();
+	List<Producto> encontrarCNM();
 }
