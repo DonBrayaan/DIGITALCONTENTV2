@@ -22,6 +22,16 @@
 
 	<nav th:replace="~{layouts/header :: header}">Header</nav>
 
+	<!-- BUTTONS -->
+	<div class="container">
+		<div class="row my-4">
+			<div class="btn-group" role="group"
+				aria-label="Basic outlined example">
+				<a th:href="@{/dom/entregas}" type="button" class="btn btn-dark">EN CAMINO</a> <a
+					th:href="@{/dom/pendiente}" type="button" class="btn btn-dark">PENDIENTE</a>
+			</div>
+		</div>
+	</div>
 	<!-- CARDS -->
 
 	<div class="container my-4">
@@ -38,10 +48,17 @@
 					</h5>
 					<hr>
 					<div th:with="orden2 =${entre.ordenCompra[0]}">
-						<div>-Cliente: <span th:text="${orden2.cliente.nombres+' '+orden2.cliente.apellidos}"></span></div>
-						<div>-Telefono: <span th:text="${orden2.cliente.telefono}"></span></div>
-						<div>-Direccion: <span th:text="${orden2.cliente.direccion}"></span></div>
-					</div>	
+						<div>
+							-Cliente: <span
+								th:text="${orden2.cliente.nombres+' '+orden2.cliente.apellidos}"></span>
+						</div>
+						<div>
+							-Telefono: <span th:text="${orden2.cliente.telefono}"></span>
+						</div>
+						<div>
+							-Direccion: <span th:text="${orden2.cliente.direccion}"></span>
+						</div>
+					</div>
 
 					<div th:each="orden : ${entre.ordenCompra}">
 						<h6>Producto</h6>
@@ -51,13 +68,20 @@
 								th:text="${orden.product.idProducto}"></span>
 						</div>
 						<div>
-						<input type="hidden" th:value="${orden.product.precio}" id="precio">
-						<input type="hidden"  th:value="${orden.cantidad}" id="cant">
-							-Cantidad: <span th:text="${orden.cantidad}"></span> unidades
+							<input type="hidden" th:value="${orden.product.precio}"
+								class="precio"> <input type="hidden"
+								th:value="${orden.cantidad}" class="cant"> -Cantidad: <span
+								th:text="${orden.cantidad}"></span> unidades
 						</div>
-					</div><hr>
-					<div>TOTAL ENTREGA: </div>
-					<input class="form-control" readonly="readonly" type="text" id="total">
+					</div>
+					<hr>
+					<div>TOTAL ENTREGA:</div>
+					<input class="form-control total" readonly="readonly" type="text"
+						id="total"> <br>
+					<div>
+						<a class="btn btn-outline-primary"
+							th:href="@{'/dom/entrega'+'/'+${entre.idEntrega}}">Actualizar</a>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -88,7 +112,6 @@
 	<script type="text/javascript"
 		th:src="@{/datatables/Buttons-2.3.4/js/buttons.html5.min.js}"></script>
 	<!-- SCRIPT -->
-	<script type="text/javascript"
-		th:src="@{/totalentrega.js}"></script>
+	<script type="text/javascript" th:src="@{/totalentrega.js}"></script>
 </body>
 </html>
