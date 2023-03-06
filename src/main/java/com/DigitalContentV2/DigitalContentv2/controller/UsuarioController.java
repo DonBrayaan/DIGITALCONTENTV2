@@ -1,6 +1,6 @@
 package com.DigitalContentV2.DigitalContentv2.controller;
 
-mport java.io.UnsupportedEncodingException;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.mail.MessagingException;
