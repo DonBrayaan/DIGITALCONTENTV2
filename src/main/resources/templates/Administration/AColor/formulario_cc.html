@@ -20,35 +20,7 @@
 
 <!-- HEADER -->
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		<div class="container-fluid">
-			<a class="navbar-brand" href="Color.html"> <img
-				src="/imgs/LOGO1.png" alt="" width="20" height="24"
-				class="d-inline-block align-text-top" /> Digital Content
-			</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarNav"
-				aria-controls="navbarNav" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarNav">
-				<ul class="navbar-nav ms-auto">
-					<li class="nav-item mx-2"><a class="nav-link active"
-						aria-current="page" style="padding-top: 0px; padding-bottom: 5px">
-							<i class="fa-solid fa-house"></i>
-					</a></li>
-					<li class="nav-item mx-2"><a class="nav-link"
-						style="padding-top: 0px; padding-bottom: 5px"> <i
-							class="fa-sharp fa-solid fa-cart-shopping"></i>
-					</a></li>
-					<li class="nav-item mx-2"><a class="nav-link"
-						style="padding-top: 0px; padding-bottom: 5px"> Iniciar sesión
-					</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
+<nav th:replace="~{layouts/header :: header}">Header</nav>
 	
 	<!-- FORM -->
 	
@@ -83,25 +55,7 @@
 	
 	<!-- FOOTER -->
 
-	<footer class="py-3 my-4" id="footerC">
-
-		<ul class="nav justify-content-center border-bottom pb-3 mb-3">
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">Home</a></li>
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">Features</a></li>
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">Pricing</a></li>
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">FAQs</a></li>
-			<li class="nav-item"><a href="#"
-				class="nav-link px-2 text-muted">About</a></li>
-		</ul>
-		<p class="text-center text-muted">
-			<img src="/imgs/LOGO1.png" alt="alt" width="20" height="24" />
-			&copy; 2022 Digital Content, designed by <span>DonBrayaan</span>
-		</p>
-	</footer>
+	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
 
 	<!-- Script Bootstrap -->
 	<script
