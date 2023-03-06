@@ -21,6 +21,7 @@ import com.DigitalContentV2.DigitalContentv2.dto.UsuarioRegistroS;
 import com.DigitalContentV2.DigitalContentv2.facade.IUsuario;
 import com.DigitalContentV2.DigitalContentv2.modelo.Rol;
 import com.DigitalContentV2.DigitalContentv2.modelo.Usuario;
+import com.DigitalContentV2.DigitalContentv2.modelo.UsuarioNotFoundException;
 import com.DigitalContentV2.DigitalContentv2.repository.RolRepository;
 import com.DigitalContentV2.DigitalContentv2.repository.UsuarioRepository;
 
