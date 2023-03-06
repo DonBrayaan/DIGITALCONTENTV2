@@ -65,6 +65,9 @@ public class Usuario implements Serializable {
 
 	@Column(name = "correo", nullable = false, length = 100)
 	private String correo;
+	
+	@Column(name = "reset_password_token", length = 100)
+  	private String resetPasswordToken;
 
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<Car_items> car;
@@ -163,6 +166,14 @@ public class Usuario implements Serializable {
 
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+	
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
 	}
 
 	public static long getSerialversionuid() {
