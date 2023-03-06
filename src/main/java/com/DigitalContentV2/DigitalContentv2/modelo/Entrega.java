@@ -8,16 +8,22 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.DigitalContentV2.DigitalContentv2.enums.estadosEntrega;
 
 @Entity
 @Table(name = "entrega")
@@ -43,7 +49,12 @@ public class Entrega implements Serializable{
 	private List<Venta> venta = new ArrayList<Venta>();
 	
 	@Column(name = "estado", length = 30)
-	private String estado;
+	@Enumerated(EnumType.STRING)
+	private estadosEntrega estado;
+	
+	@ManyToOne
+	@JoinColumn(name = "idDomiciliario")
+	private Usuario idCliente;
 
 	public Integer getIdEntrega() {
 		return idEntrega;
@@ -59,6 +70,14 @@ public class Entrega implements Serializable{
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public Usuario getIdCliente() {
+		return idCliente;
+	}
+
+	public void setIdCliente(Usuario idCliente) {
+		this.idCliente = idCliente;
 	}
 
 	public List<Car_items> getOrdenCompra() {
@@ -77,11 +96,11 @@ public class Entrega implements Serializable{
 		this.venta = venta;
 	}
 
-	public String getEstado() {
+	public estadosEntrega getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(estadosEntrega estado) {
 		this.estado = estado;
 	}
 
@@ -89,13 +108,16 @@ public class Entrega implements Serializable{
 		return serialVersionUID;
 	}
 
-	public Entrega(String estado) {
-		super();
-		this.estado = estado;
-	}
-
 	public Entrega() {
 		super();
+	}
+
+	public Entrega(Integer idEntrega, Date fecha, estadosEntrega estado, Usuario idCliente) {
+		super();
+		this.idEntrega = idEntrega;
+		this.fecha = fecha;
+		this.estado = estado;
+		this.idCliente = idCliente;
 	}
 	
 }
