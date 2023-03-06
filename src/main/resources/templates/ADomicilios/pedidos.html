@@ -51,14 +51,17 @@
 								th:text="${orden.product.idProducto}"></span>
 						</div>
 						<div>
+						<input type="hidden" th:value="${orden.product.precio}" id="precio">
+						<input type="hidden"  th:value="${orden.cantidad}" id="cant">
 							-Cantidad: <span th:text="${orden.cantidad}"></span> unidades
 						</div>
-					</div>
+					</div><hr>
+					<div>TOTAL ENTREGA: </div>
+					<input class="form-control" readonly="readonly" type="text" id="total">
 				</div>
 			</div>
 		</div>
 	</div>
-
 
 	<!-- FOOTER -->
 
@@ -84,7 +87,8 @@
 		th:src="@{/datatables/pdfmake-0.1.36/vfs_fonts.js}"></script>
 	<script type="text/javascript"
 		th:src="@{/datatables/Buttons-2.3.4/js/buttons.html5.min.js}"></script>
-	<!-- JavaScript -->
-	<script type="text/javascript" th:src="@{/barrioJS/barrio.js}"></script>
+	<!-- SCRIPT -->
+	<script type="text/javascript"
+		th:src="@{/totalentrega.js}"></script>
 </body>
 </html>
