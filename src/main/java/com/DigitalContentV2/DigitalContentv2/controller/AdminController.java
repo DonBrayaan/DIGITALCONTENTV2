@@ -39,16 +39,39 @@ public class AdminController {
 		return "index";
 	}
 	
-	/*
-	@GetMapping("/")
-	public String index() {
-		return "redirect:/home";
+	@GetMapping("/mujer")
+	private String catalogoM(Model modelo) {
+		List<Producto> lstPro = productoDao.encontrarCM();
+		modelo.addAttribute("productos", lstPro);
+		List<Usuario> lstUsu = this.usuarioDao.encontrarTodo();
+		modelo.addAttribute("usuarios", lstUsu);
+		return "filtroc/lstM";
 	}
 	
-	@GetMapping("/home")
-	public String home(){
-		return "/home";
+	@GetMapping("/hombre")
+	private String catalogoH(Model modelo) {
+		List<Producto> lstPro = productoDao.encontrarCH();
+		modelo.addAttribute("productos", lstPro);
+		List<Usuario> lstUsu = this.usuarioDao.encontrarTodo();
+		modelo.addAttribute("usuarios", lstUsu);
+		return "filtroc/lstH";
 	}
-	*/
+	
+	@GetMapping("/nino")
+	private String catalogoGNH(Model modelo) {
+		List<Producto> lstPro = productoDao.encontrarCNH();
+		modelo.addAttribute("productos", lstPro);
+		List<Usuario> lstUsu = this.usuarioDao.encontrarTodo();
+		modelo.addAttribute("usuarios", lstUsu);
+		return "filtroc/lstNH";
+	}
+	@GetMapping("/nina")
+	private String catalogoGNM(Model modelo) {
+		List<Producto> lstPro = productoDao.encontrarCNM();
+		modelo.addAttribute("productos", lstPro);
+		List<Usuario> lstUsu = this.usuarioDao.encontrarTodo();
+		modelo.addAttribute("usuarios", lstUsu);
+		return "filtroc/lstNM";
+	}
 
 }
