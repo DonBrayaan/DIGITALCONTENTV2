@@ -20,6 +20,30 @@ public class Productodao implements IProducto {
 		
 		return this.productoRepository.findAll();
 	}
+	
+	@Override
+	public List<Producto> encontrarCM() {
+		
+		return this.productoRepository.buscarGM();
+	}
+	
+	@Override
+	public List<Producto> encontrarCH() {
+		
+		return this.productoRepository.buscarGH();
+	}
+
+	@Override
+	public List<Producto> encontrarCNH() {
+		
+		return this.productoRepository.buscarGNH();
+	}
+	
+	@Override
+	public List<Producto> encontrarCNM() {
+		
+		return this.productoRepository.buscarGNM();
+	}
 
 	@Override
 	public Producto encontrarId(Integer idProducto) {
