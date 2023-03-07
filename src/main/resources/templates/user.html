@@ -21,17 +21,24 @@
 	<nav th:replace="~{layouts/header :: header}">Header</nav>
 
 	<div class="container my-4 " id="scroll">
-			
-			
 
+			<th:block sec:authorize="hasAuthority('Administrador')">
+				<a class="btn btn-primary" th:href="@{/admin}">Opciones de Administrador</a>
+			</th:block>
+			<th:block sec:authorize="hasAnyAuthority('Domiciliario','Administrador')">
+				<a class="btn btn-primary" th:href="@{/dom/entregas}">Opciones de Domiciliario</a>
+			</th:block>
+	
 		<div class="row">
 
 
 			<table class="table table-dark table-striped">
-			<thead>
-			<th><h2>Datos de usuario</h2></th>
-			<th><a th:href="@{'/registro/usuario/editar'+'/'+ ${user.idUsuario}}" class="btn btn-success">Editar</a></th>
-			</thead>
+				<thead>
+					<th><h2>Datos de usuario</h2></th>
+					<th><a
+						th:href="@{'/registro/usuario/editar'+'/'+ ${user.idUsuario}}"
+						class="btn btn-success">Editar</a></th>
+				</thead>
 				<tbody>
 					<tr>
 						<th scope="row">Nombres</th>
