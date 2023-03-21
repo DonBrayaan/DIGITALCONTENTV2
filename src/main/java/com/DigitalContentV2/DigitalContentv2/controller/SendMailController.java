@@ -33,6 +33,12 @@ public class SendMailController {
 		return "mail_view";
 	}
 	
+	@GetMapping("/view-mails")
+	public String mails() {
+		
+		return "sendsmails";
+	}
+	
 	@GetMapping("/correos")
 	public String correos(String correos,Model model) {
 		String[] listaCorreos = usuarioDao.listarCorreos();
@@ -51,20 +57,20 @@ public class SendMailController {
 	    }
 	 
 	 @PostMapping("/sendMailWithTemplate")
-	 public String sendMailTemplate(Mail mail) throws MessagingException, IOException {
+	 public String sendMailTemplate(@RequestParam("subject") String subject, Mail mail) throws MessagingException, IOException {
 		 
 		 	String[] listaCorreos = usuarioDao.listarCorreos();
 		 
 		 	for (int i = 0; i < listaCorreos.length; i++) {
 		 		mail.setFrom("digitialcontent@gmail.com");
 				 mail.setMailTo(listaCorreos[i]);
-				 mail.setSubject("Hola esta es la prueba 1");
+				 mail.setSubject(subject);
 				 
 				 sendMailService.sendEmailTemplate(mail);
 			}
 			 
 
-		 return "mail_view";
+		 return "sendsmails";
 		 
 	 }
 	 
