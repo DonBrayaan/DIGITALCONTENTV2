@@ -161,6 +161,19 @@
          	Historial de Entregas
         </a>
       </li>
+	 <li>
+        <a class="align-items-center nav-link text-white" role="button" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse3">
+          Enviar Correo
+        </a>
+        <div class="collapse" id="dashboard-collapse3">
+          <ul class="btn-toggle-nav  list-unstyled fw-normal pb-1 small">
+            <li><a th:href="@{/mail/view}" class="link-dark text-decoration-none rounded">- Personal</a></li>
+          </ul>
+          <ul class="btn-toggle-nav  list-unstyled fw-normal pb-1 small">
+            <li><a th:href="@{/mail/view-mails}" class="link-dark text-decoration-none rounded">- Masivo</a></li>
+          </ul>
+        </div>
+      </li>
     </ul>
     <hr>
     <div class="dropdown">
