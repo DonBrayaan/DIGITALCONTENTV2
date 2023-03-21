@@ -52,9 +52,9 @@
 <div class="container">
     <div class="card">
         <div class="jumbotron">
-            <h1 style="text-align: center;">Enviar e-mail</h1>
+            <h1 style="text-align: center;">Enviar Correo Electrónico</h1>
         </div>
-        <form method="POST" th:action="@{/mail/sendMailWithTemplate}" id="emailForm" class="container" enctype="multipart/form-data">
+        <form method="POST" th:action="@{/mail/sendMail}" id="emailForm" class="container" enctype="multipart/form-data">
             <div class="form-group">
                 <label>Nombre</label>
                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
