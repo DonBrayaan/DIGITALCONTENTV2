@@ -16,7 +16,7 @@ import com.DigitalContentV2.DigitalContentv2.modelo.Proveedor;
 
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("/admin")
 public class ProveedorController {
 	
 	@Autowired
@@ -27,14 +27,14 @@ public class ProveedorController {
 		
 		List<Proveedor> lstProveedor = this.proveedorDao.encontrarporEstado();
 		modelo.addAttribute("listaP", lstProveedor);
-		return "Administration/Aproveedor/proveedor";
+		return "Administration/AProveedor/proveedor";
 	}
 	
 	@GetMapping("/proveedor/nuevoP")
 	public String formularioCrear(Model modelo) {
 		
 		modelo.addAttribute("proveedorN",new Proveedor());
-		return "Administration/Aproveedor/formulario_cp";
+		return "Administration/AProveedor/formulario_cp";
 	}
 	
 	
@@ -50,7 +50,7 @@ public class ProveedorController {
 		Proveedor proveedor = proveedorDao.encontrarId(idProveedor);
 		modelo.addAttribute("proveedor", proveedor);
 		
-		return "Administration/Aproveedor/formulario_ep";
+		return "Administration/AProveedor/formulario_ep";
 	}
 
 	
