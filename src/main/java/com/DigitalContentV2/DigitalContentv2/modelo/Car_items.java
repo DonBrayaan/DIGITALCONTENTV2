@@ -30,6 +30,14 @@ public class Car_items {
 	private Entrega ordenCompra;
 
 	private int cantidad;
+	
+	public Entrega getOrdenCompra() {
+		return ordenCompra;
+	}
+
+	public void setOrdenCompra(Entrega ordenCompra) {
+		this.ordenCompra = ordenCompra;
+	}
 
 	public Integer getId() {
 		return id;

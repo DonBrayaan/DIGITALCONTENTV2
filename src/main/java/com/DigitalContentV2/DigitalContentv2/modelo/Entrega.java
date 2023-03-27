@@ -14,7 +14,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -43,10 +42,7 @@ public class Entrega implements Serializable{
 	private Date fecha;
 	
 	@OneToMany(mappedBy = "ordenCompra", cascade = CascadeType.ALL)
-	private List<Car_items> ordenCompra;
-	
-	@ManyToMany(mappedBy = "entrega")
-	private List<Venta> venta = new ArrayList<Venta>();
+	private List<Car_items> ordenCompra = new ArrayList<>();
 	
 	@Column(name = "estado", length = 30)
 	@Enumerated(EnumType.STRING)
@@ -55,6 +51,10 @@ public class Entrega implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "idDomiciliario")
 	private Usuario idCliente;
+	
+	@ManyToOne
+	@JoinColumn(name = "idVenta")
+	private Venta idVenta;
 
 	public Integer getIdEntrega() {
 		return idEntrega;
@@ -88,14 +88,6 @@ public class Entrega implements Serializable{
 		this.ordenCompra = ordenCompra;
 	}
 
-	public List<Venta> getVenta() {
-		return venta;
-	}
-
-	public void setVenta(List<Venta> venta) {
-		this.venta = venta;
-	}
-
 	public estadosEntrega getEstado() {
 		return estado;
 	}
@@ -111,6 +103,14 @@ public class Entrega implements Serializable{
 	public Entrega() {
 		super();
 	}
+	
+	public Venta getIdVenta() {
+		return idVenta;
+	}
+
+	public void setIdVenta(Venta idVenta) {
+		this.idVenta = idVenta;
+	}
 
 	public Entrega(Integer idEntrega, Date fecha, estadosEntrega estado, Usuario idCliente) {
 		super();
@@ -118,6 +118,15 @@ public class Entrega implements Serializable{
 		this.fecha = fecha;
 		this.estado = estado;
 		this.idCliente = idCliente;
+	}
+
+	public Entrega(Integer idEntrega, Date fecha, estadosEntrega estado, Usuario idCliente, Venta idVenta) {
+		super();
+		this.idEntrega = idEntrega;
+		this.fecha = fecha;
+		this.estado = estado;
+		this.idCliente = idCliente;
+		this.idVenta = idVenta;
 	}
 	
 }
