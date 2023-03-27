@@ -62,9 +62,6 @@ public class Producto implements Serializable {
 	
 	@OneToMany(mappedBy = "id_Producto_fk")
 	private List<Compra> compra;
-	
-	@OneToMany(mappedBy = "id_Producto_fk")
-	private List<Venta> venta;
 
 	public Integer getIdProducto() {
 		return idProducto;
