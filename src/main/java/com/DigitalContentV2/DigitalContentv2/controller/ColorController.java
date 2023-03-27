@@ -26,7 +26,7 @@ public class ColorController {
 
 		List<Color> lstColor = this.colorDao.encontrarporEstado();
 		modelo.addAttribute("listaC", lstColor);
-		return "Administration/Acolor/color";
+		return "Administration/AColor/color";
 	}
 	
 	@GetMapping("/color/nuevoC")
