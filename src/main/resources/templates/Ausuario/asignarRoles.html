@@ -32,7 +32,7 @@
 				<div class="container my-4">
 					<div class="row justify-content-center">
 						<form class="col-md-6 my-4 bg-light text-center"
-							th:action="@{/admin/usuario}" th:object="${usuario}"
+							th:action="@{/admin/usuario}" th:id="en" th:object="${usuario}"
 							method="POST">
 							<figure class="text-center">
 								<blockquote class="blockquote">
@@ -67,7 +67,7 @@
 
 							<br> <br>
 							<button class="btn btn-danger"
-								onclick="confirm('Se le otorgaran permisos a este Usuario, ¿¡¡ESTA SEGURO!!?')">Actualizar</button>
+								onclick="pregunta(event)">Actualizar</button>
 							<br> <br>
 						</form>
 					</div>
@@ -78,5 +78,13 @@
 	<!-- FOOTER -->
 
 	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
+	<!-- Script Bootstrap -->
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"
+		crossorigin="anonymous"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{/volverarriba.js}"></script>
+	<!-- SweetAlert2 -->
+	<script type="text/javascript" th:src="@{/SweetAlert2/package/dist/sweetalert2.all.min.js}"></script>
 </body>
 </html>
