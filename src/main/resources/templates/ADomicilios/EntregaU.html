@@ -26,7 +26,7 @@
 	<div class="container my-4">
 		<div class="row justify-content-center">
 			<form id="formularioC" class="col-md-6 my-4 bg-light"
-				th:action="@{/dom/entrega}" th:object="${Entrega}" method="POST">
+				th:action="@{/dom/entrega}" th:id="en" th:object="${Entrega}" method="POST">
 				<figure class="text-center">
                         <blockquote class="blockquote">
                             <p>REGISTRAR ESTADO</p>
@@ -36,7 +36,7 @@
                         </figcaption>
                 </figure>
                 <label>Numero de Pedido:</label>
-				<input type="text" class="form-control" readonly="readonly" th:field="*{idEntrega}" th:value="${Entrega.idEntrega}">
+				<input type="text" class="form-control" name="precio" readonly="readonly" th:field="*{idEntrega}" th:value="${Entrega.idEntrega}">
 				<br>
 				<label>Fecha Realizacion:</label>
 				<input type="date" class="form-control" th:field="*{fecha}" readonly="readonly" th:value="${Entrega.fecha}">
@@ -49,7 +49,7 @@
 				</select>
 				<br>
 				<div class="box-footer">
-					<button class="btn btn-danger">Actualizar</button>	
+					<button class="btn btn-danger" onclick="pregunta(event)">Actualizar</button>	
 				</div>
 			</form>
 		</div>
@@ -58,7 +58,7 @@
 	<!-- FOOTER -->
 
 	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
-
+	
 	<!-- Script Bootstrap -->
 	<script th:src="@{/bootstrap/js/bootstrap.min.js}"
 		crossorigin="anonymous"></script>
@@ -81,6 +81,9 @@
 		th:src="@{/datatables/Buttons-2.3.4/js/buttons.html5.min.js}"></script>
 	<!-- SCRIPT -->
 	<script type="text/javascript" th:src="@{/totalentrega.js}"></script>
+	<!-- SweetAlert2 -->
+	<script type="text/javascript" th:src="@{/SweetAlert2/package/dist/sweetalert2.all.min.js}"></script>
+	
 </body>
 </html>
 </body>
