@@ -26,7 +26,7 @@ function removeFromCart(link) {
 			xhr.setRequestHeader(crsfHeaderName, crsfValue);
 		}
 	}).done(function(response) {
-		
+
 
 		$("#modalTitle").text("Carrito de Compras");
 		if (response.includes("El producto ha sido removido del Carrito")) {
@@ -34,7 +34,7 @@ function removeFromCart(link) {
 				rowNumber = link.attr("rowNumber")
 				removeProduct("rowNumber");
 				updateTotal();
-			});	
+			});
 		}
 		$("#modalBody").text(response);
 		$("#myModal").modal();
@@ -104,4 +104,34 @@ function updateTotal() {
 	});
 
 	$("#totalEstimado").text("$" + total);
+}
+
+
+function pregunta(event) {
+	event.preventDefault();
+	// Crea una alerta de confirmación con SweetAlert2
+	Swal.fire({
+		title: '¿Está seguro de realizar el pedido?',
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonText: 'Aceptar',
+		cancelButtonText: 'Cancelar'
+	}).then((result) => {
+		// Si el usuario hace clic en "Aceptar", envía el formulario
+		if (result.isConfirmed) {
+			Swal.fire(
+				'Correcto!',
+				'Tu pedido se encuentra en Camino, no olvides mantener actulizada tu direccion de residencia.',
+				'success').then((result2) => {
+					if (result2.isConfirmed) {
+						document.getElementById('en').submit();
+					}
+				})
+		} else {
+			// Si el usuario hace clic en "Cancelar", muestra un mensaje
+			Swal.fire('Cancelado', '', 'info');
+		}
+	});
+	
+
 }
