@@ -1,12 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title></title>
+<title>No tienes permisos</title>
 </head>
 <body>
-REQUIERES PERMISOS PARA INGRESAR A ESTA URL
-<br><br>
-<a href="/">Volver</a>
+	<div class="container">
+		<h1 id="message">No tienes permisos para ingresar aquí</h1>
+		<button id="back-btn">Volver al inicio</button>
+	</div>
+
+	<style>
+body {
+	background-color: #fff;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+
+h1 {
+	font-size: 3rem;
+	color: #333;
+	margin-bottom: 3rem;
+	opacity: 0;
+	transition: opacity 1s ease-in-out;
+}
+
+button {
+	font-size: 1.5rem;
+	background-color: #333;
+	color: #fff;
+	padding: 1rem 2rem;
+	border: none;
+	cursor: pointer;
+	transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+	background-color: #555;
+}
+</style>
+	<script>
+	const message = document.getElementById('message');
+const backBtn = document.getElementById('back-btn');
+
+setTimeout(() => {
+	message.style.opacity = '1';
+}, 1000);
+
+function randomColor() {
+	const letters = '0123456789ABCDEF';
+	let color = '#';
+	for (let i = 0; i < 6; i++) {
+		color += letters[Math.floor(Math.random() * 16)];
+	}
+	return color;
+}
+
+setInterval(() => {
+	backBtn.style.backgroundColor = randomColor();
+}, 1000);
+
+backBtn.addEventListener('click', () => {
+	window.location.href = '/';
+});
+
+	</script>
 </body>
-</html>	
+</html>
