@@ -17,7 +17,7 @@ import com.DigitalContentV2.DigitalContentv2.modelo.Rol;
 import com.DigitalContentV2.DigitalContentv2.modelo.Usuario;
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("/admin")
 public class UsuarioControllerCrud {
 
 	@Autowired
