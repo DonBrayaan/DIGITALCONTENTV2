@@ -15,7 +15,7 @@ import com.DigitalContentV2.DigitalContentv2.facadeImp.Devoluciondao;
 import com.DigitalContentV2.DigitalContentv2.modelo.Devolucion;
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("/admin")
 public class DevolucionController {
 	
 	@Autowired
