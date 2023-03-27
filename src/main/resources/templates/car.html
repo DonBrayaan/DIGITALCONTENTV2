@@ -22,62 +22,78 @@
 	<!-- HEADER -->
 
 	<nav th:replace="~{layouts/header :: header}">Header</nav>
+	<br>
+	<div style="margin: 0 auto; text-align: center;">
+		<span class="h2 mx-3">Carrito de Compras:</span>
+	</div>
+	<div class="container" style="justify-content: center;">
+		<div class="row">
+			<div class="col-sm-7  my-4">
+				<th:block th:each="item, status : ${cartItems}">
+					<div class="row border rounded detail" th:with="product = ${item.product}"
+						th:id="'row' + ${status.count}">
+						<div class="col-1">
+							<div>[[${status.count}]]</div>
+							<div>
+								<a class="fa-regular fa-trash link-remove"
+									th:rowNumber="${status.count}" data-bs-toggle="modal"
+									data-bs-target="#myModal"
+									style="text-decoration: none; color: grey;"
+									th:href="@{'/carrito/remove/' + ${product.idProducto}}"></a>
+							</div>
+						</div>
+						<div class="col-3">
+							<img th:if="${product.foto}"
+								th:src="@{'/cat/uploads/' + ${product.foto}}"
+								style="width: 100%; height: 90%; margin: 0 auto;"
+								class="card-img-top my-3" alt="">
 
-
-	<div class="row m-1">
-		<div class="col-sm-8">
-			<th:block th:each="item, status : ${cartItems}">
-				<div class="row border rounded" th:with="product = ${item.product}"
-					th:id="'row' + ${status.count}">
-					<div class="col-1">
-						<div>[[${status.count}]]</div>
-						<div><a class="fa-regular fa-trash link-remove" 
-						th:rowNumber="${status.count}"
-						data-bs-toggle="modal" data-bs-target="#myModal"
-						style="text-decoration: none; color: grey;" th:href="@{'/carrito/remove/' + ${product.idProducto}}"></a></div>
-					</div>
-					<div class="col-3">
-						<img th:if="${product.foto}" th:src="@{'/cat/uploads/' + ${product.foto}}" style="width: 200px; height: 200px; margin: 0 auto;" class="card-img-top my-3" alt="">
-					
-					</div>
-					<div class="col-6">
-						<div>
-							<a>
-								<b>[[${product.nombre}]]</b>
-							</a>
 						</div>
-						<div th:replace="controldecantidad :: control_cantidad(${item.cantidad}, ${item.product.idProducto})">Cantidad</div>
-						<div>
-							<span>X</span>
-							<span>$[[${product.precio}]]</span>
-						</div>
-						<div>
-							<span>=</span><span>$</span>
-							<span th:id="'subtotal' + ${product.idProducto}" 
-								class="h4 productSubtotal">[[${item.subtotal}]]</span>
+						<div class="col-6" style="text-align: center;">
+							<div>
+								<a> <b>[[${product.nombre}]]</b>
+								<br>
+								</a>
+							</div>
+							<div class="mx-3"
+								th:replace="controldecantidad :: control_cantidad(${item.cantidad}, ${item.product.idProducto})">Cantidad</div>
+							<div>
+								<span>X</span> <span>$[[${product.precio}]]</span>
+							</div>
+							<div>
+								<span>=</span><span>$</span> <span
+									th:id="'subtotal' + ${product.idProducto}"
+									class="h4 productSubtotal">[[${item.subtotal}]]</span>
+							</div>
 						</div>
 					</div>
+				</th:block>
+			</div>
+			<div class="col-sm-4 my-4" style="text-align: center;" th:unless="${#lists.isEmpty(cartItems)}">
+				<div>
+					<span class="h3">Estimado Total:</span>
 				</div>
-				<div class="row m-1">&nbsp;</div>
-			</th:block>
-		</div>
-		<div class="col-sm-4" th:unless="${#lists.isEmpty(cartItems)}">
-			<div>
-				<span class="h3">Estimado Total:</span>
+				<div class="mt-2">
+					<span class="h2" id="totalEstimado"></span>
+				</div>
+				<div class="mt-2">
+					<form th:action="@{/generar}" method="POST" id="en">
+						<button class="btn btn-outline-danger p-3 mt-2" th:onclick="return pregunta(event)">Ordenar</button>
+					</form>
+				</div>
 			</div>
-			<div class="mt-2">
-				<span class="h2" id="totalEstimado"></span>
+			<div th:if="${#lists.isEmpty(cartItems)}">
+				<h2>El carrito se encuentra vacio :D</h2>
 			</div>
-			<div class="mt-2">
-			<form th:action="@{/generar}" method="POST">
-				<button class="btn btn-outline-danger p-3 mt-2">Ordenar</button>
-			</form>
-			</div>
-		</div>
-		<div th:if="${#lists.isEmpty(cartItems)}">
-			<h2>El carrito se encuentra vacio :D</h2>
 		</div>
 	</div>
+	<style>
+.detail {
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(148, 148, 148, 1);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(148, 148, 148, 1);
+	box-shadow: 10px 10px 5px 0px rgba(148, 148, 148, 1);
+}
+</style>
 	<script type="text/javascript">
 		
 		contextPath = "[[@{/}]]";
@@ -85,13 +101,16 @@
 		var crsfValue = "[[${_csrf.token}]]";
 		
 	</script>
+	<div th:replace="~{layouts/Footer :: footer}">Modal</div>
 	<div th:replace="~{layouts/Modals :: standard_modal2}">Modal
 		estandarte</div>
-<!-- Script Bootstrap -->
+	<!-- Script Bootstrap -->
 	<script th:src="@{/bootstrap/js/bootstrap.min.js}"
 		crossorigin="anonymous"></script>
-<!-- JQuery -->
-<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
-<script type="text/javascript" th:src="@{/car_shopping.js}"></script>
+	<!-- JQuery -->
+	<script type="text/javascript" th:src="@{/JQuery/jquery-3.6.1.min.js}"></script>
+	<script type="text/javascript" th:src="@{/car_shopping.js}"></script>
+	<!-- SweetAlert2 -->
+	<script type="text/javascript" th:src="@{/SweetAlert2/package/dist/sweetalert2.all.min.js}"></script>
 </body>
 </html>
