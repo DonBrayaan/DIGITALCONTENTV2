@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.DigitalContentV2.DigitalContentv2.facadeImp.Colordao;
 import com.DigitalContentV2.DigitalContentv2.modelo.Color;
 
-@RequestMapping("/admin/")
+@RequestMapping("/admin")
 @Controller
 public class ColorController {
 	
@@ -33,7 +33,7 @@ public class ColorController {
 	public String formularioCrear(Model modelo) {
 	
 		modelo.addAttribute("colorN",new Color());
-		return "Administration/Acolor/formulario_cc";
+		return "Administration/AColor/formulario_cc";
 	}
 	
 	@PostMapping("/color")
@@ -47,7 +47,7 @@ public class ColorController {
 		
 		Color color = colorDao.encontrarId(idColor);
 		modelo.addAttribute("color",color);
-		return "Administration/Acolor/formulario_ec";
+		return "Administration/AColor/formulario_ec";
 	}
 	
 	@GetMapping("/color/eliminar/{idColor}")
