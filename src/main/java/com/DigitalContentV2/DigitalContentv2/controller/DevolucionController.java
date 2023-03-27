@@ -21,7 +21,7 @@ public class DevolucionController {
 	@Autowired
 	private Devoluciondao devolucionDao;
 	
-	@GetMapping({"/devolucion"})
+	@GetMapping("/devolucion")
 	public String allDevolucion(Model modelo) {
 
 		List<Devolucion> lstDevolucion = this.devolucionDao.encontrarTodo();
