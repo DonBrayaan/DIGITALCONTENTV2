@@ -20,40 +20,56 @@
 	<!-- HEADER -->
 
 	<nav th:replace="~{layouts/header :: header}">Header</nav>
+
+<br>
+	<h4 class="span mx-2">¿Te gustan nuestro productos? pidelos hasta tu domicilio</h4>
 	
-	<div class="container-fluid">
+	<div class="container container-fluid my-4" style="margin: auto;">
 		<div class="row m-1">
-			<div class="col-sm-10">
-				<div class="row border rounded">
+			<div class="col-sm-12">
+				<div class="row border rounded detail">
 					<div class="col-3">
-						<img th:if="${producto.foto}" th:src="@{'/cat/uploads/' + ${producto.foto}}" style="width: 250px; height: 250px; margin: 0 auto;" class="card-img-top my-3" alt="">
+						<img th:if="${producto.foto}"
+							th:src="@{'/cat/uploads/' + ${producto.foto}}"
+							style="width: 100%; height: 90%; margin: 0 auto;"
+							class="card-img-top my-3" alt="">
 					</div>
 					<div class="col-5" style="text-align: center;">
 						<div>
-						<br>
-							<a>
-								<b th:text="${producto.nombre}" style="font-size: 30px"></b>
+							<br> <a> <b th:text="${producto.nombre}"
+								style="font-size: 200%;"></b>
 							</a>
 						</div>
 					</div>
 					<div class="col-2">
 						<div>
-						<br>
-							<span>X</span>
-							<span style="font-size: 30px">$[[${producto.precio}]]</span>
+							<br> <span>X</span> <span style="font-size: 30px">$[[${producto.precio}]]</span>
 						</div>
 					</div>
 					<div class="col-2">
-						<div><br>
-							<div th:replace="controldecantidad :: control_cantidad(1, ${producto.idProducto})">Cantidad</div>
-						<button id="buttonAddCart" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal">Agregar al Carrito<i class="fa-solid fa-cart-shopping"></i></button>
-					</div>
+						<div>
+							<br>
+							<div
+								th:replace="controldecantidad :: control_cantidad(1, ${producto.idProducto})">Cantidad</div>
+							<button id="buttonAddCart" type="button" class="btn btn-danger"
+								data-bs-toggle="modal" data-bs-target="#myModal">
+								Agregar al Carrito<i class="fa-solid fa-cart-shopping"></i>
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
+	<style>
+.detail {
+	-webkit-box-shadow: 10px 10px 5px 0px rgba(148, 148, 148, 1);
+	-moz-box-shadow: 10px 10px 5px 0px rgba(148, 148, 148, 1);
+	box-shadow: 10px 10px 5px 0px rgba(148, 148, 148, 1);
+}
+</style>
+
 	<script type="text/javascript">
 		
 		contextPath = "[[@{/}]]";
@@ -62,7 +78,7 @@
 		var idProducto = "[[${producto.idProducto}]]";
 		
 	</script>
-	
+
 	<!-- FOOTER -->
 
 	<footer th:replace="~{layouts/footer :: footer}">Footer</footer>
