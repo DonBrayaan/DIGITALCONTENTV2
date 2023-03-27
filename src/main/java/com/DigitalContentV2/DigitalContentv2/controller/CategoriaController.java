@@ -17,7 +17,7 @@ import com.DigitalContentV2.DigitalContentv2.facadeImp.Categoriadao;
 import com.DigitalContentV2.DigitalContentv2.modelo.Categoria;
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("/admin")
 public class CategoriaController {
 	
 	@Autowired
@@ -28,13 +28,13 @@ public class CategoriaController {
 		
 		List<Categoria> lstCategoria = this.categoriaDao.encontrarporEstado();
 		modelo.addAttribute("listaC", lstCategoria);
-		return "Administration/Acategoria/categoria";
+		return "Administration/ACategoria/categoria";
 	}
 	
 	@GetMapping("/categoria/nuevoC")
 	public String formularioCrear(Model modelo) {
 		modelo.addAttribute("categoriaN",new Categoria());
-		return "Administration/Acategoria/formulario_cc";
+		return "Administration/ACategoria/formulario_cc";
 	}
 	
 	@PostMapping("/categoria")
@@ -49,7 +49,7 @@ public class CategoriaController {
 		Categoria categoria = categoriaDao.encontrarId(idCategoria);
 		modelo.addAttribute("categoria",categoria);
 	
-		return "Administration/Acategoria/formulario_ec";
+		return "Administration/ACategoria/formulario_ec";
 	}
 	
 	@GetMapping("/categoria/eliminar/{idCategoria}")
