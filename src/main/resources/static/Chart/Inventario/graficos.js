@@ -16,6 +16,7 @@ function traerData(tipo) {
 		}]
 	}
 	$.ajax({
+		
 		type: "GET",
 		url: url,
 		success: function(response) {
