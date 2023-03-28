@@ -5,7 +5,7 @@ let myChart;
 function traerData(tipo) {
 	nomP = [];
 	stock = [];
-	url = "http://localhost:8090/admin/invt"
+	url = "https://digitalcontentv2-production.up.railway.app/admin/invt"
 	response = {
 		"data": [{
 			"idInventario": num1,
