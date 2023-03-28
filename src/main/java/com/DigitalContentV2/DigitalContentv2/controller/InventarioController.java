@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.DigitalContentV2.DigitalContentv2.facadeImp.Inventariodao;
 import com.DigitalContentV2.DigitalContentv2.modelo.Inventario;
 
-@RequestMapping(path = "/admin")
+@RequestMapping("/admin")
 @Controller
 public class InventarioController {
 
