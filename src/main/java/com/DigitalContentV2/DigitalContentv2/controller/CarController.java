@@ -31,7 +31,7 @@ public class CarController {
 		List<Car_items> cartItems = cardao.listCarItems(logueado);
 		modelo.addAttribute("cartItems", cartItems);
 		modelo.addAttribute("pageTitle", "ShoppingCart");
-		return "/car";
+		return "car";
 	}
 	
 	@PostMapping("/generar")
